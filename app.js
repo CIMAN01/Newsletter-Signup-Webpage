@@ -32,7 +32,7 @@ app.post("/", function(req, res) {
     const firstName = req.body.fName // parsing first name
     const lastName = req.body.lName // parsing last name
     const email = req.body.email // parsing email
-    // data in the form of an array object
+    // data in the form of an array of objects
     const data = {
         // member objects
         members: [
@@ -72,13 +72,13 @@ app.post("/", function(req, res) {
             // if uneccessful we redirect user to failure page
             res.sendFile(__dirname + "/failure.html")
         }
-        // response =! res
+        // response != res
         response.on("data", function(data) {
             // parse the data before console logging it
             console.log(JSON.parse(data))
         })
     })
-    // must include end() after write() to specifiy we are done with the request
+    // must include end() after write() to specify we are done with the request
     request.write(jsonData)
     request.end()
 })
